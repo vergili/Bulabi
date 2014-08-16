@@ -1,0 +1,33 @@
+﻿@model IEnumerable<bulabi.Domain.Entities.Video>
+
+@{
+    ViewBag.Title = "GetVideo: All Videos";
+    Layout = "~/Views/Shared/_GetVideoLayout.cshtml";
+
+}
+
+<h1>All Videos</h1>
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th class="NumericCol">Country</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.VideoID</td>
+            <td>@Html.ActionLink(item.Title, "Edit", new { item.VideoID })</td>
+            <td class="NumericCol">@item.Country</td>
+            <td class="NumericCol">@item.Category</td>
+
+            <td>
+                @using (Html.BeginForm("Delete", "GetVideo")) {
+                    @Html.Hidden("VideoID", item.VideoID)
+                    <input type="submit" value="Delete"/>
+                }
+            </td>
+        </tr>
+    }
+</table>
+<p>@Html.ActionLink("Add a new Video", "Create")</p>

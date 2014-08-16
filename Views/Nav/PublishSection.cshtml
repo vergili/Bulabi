@@ -1,0 +1,14 @@
+﻿@model IEnumerable<string>
+
+
+@foreach (var link in Model) {
+    @Html.RouteLink(link, new {
+        controller = "Product",
+        action = "List",
+        publishsection = link,
+        page = 1
+    },
+    new {
+        @class = link == ViewBag.SelectedPublishSection ? "selected" : null
+    })
+}

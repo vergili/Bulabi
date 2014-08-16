@@ -1,0 +1,84 @@
+﻿@model bulabi.WebUI.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "Bulabi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="container">
+
+    <div id="container-folio" style="position:relative">
+
+
+        @if(Model.CurrentChannel==null )
+        {
+            for (int i = 0; i < Model.Link.Count(); i++)
+            {
+
+                <div class="box col-xs-12 col-md-4 col-sm-6 col-lg-3">
+                    <div class="thumbnail">
+                        <div class="plus">
+                            @*<a href="#" title="read more" class="btn btn-medium btn-default"><i class="fa-icon-heart"></i> f</a>
+                                <a href="#" title="pin it" class="btn btn-medium btn-danger">t</a>*@
+
+                        </div>
+                        <a href="~/Product/Video?originID=@Model.OriginID[i]" title="">
+                            <img class="img-responsive" src="@Model.Image[i]" alt="">
+                        </a>
+                        <div class="caption">
+                            <h4 class="single-title"><a href="~/Product/Video?originID=@Model.OriginID[i]" title="">@Model.Title[i]</a></h4>
+                            <span class="meta label label-success">
+
+                                View: @Model.View[i]
+                            </span>
+
+                            <p>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Model.Link.Count(); i++)
+            {
+
+                <div class="box col-xs-12 col-md-4 col-sm-6 col-lg-3">
+                    <div class="thumbnail">
+                        <div class="plus">
+                            @*<a href="#" title="read more" class="btn btn-medium btn-default"><i class="fa-icon-heart"></i> f</a>
+                                <a href="#" title="pin it" class="btn btn-medium btn-danger">t</a>*@
+
+                        </div>
+                        <a href="~/Product/Channel?channelID=@Model.OriginID[i]" title="">
+                            <img class="img-responsive" src="@Model.Image[i]" alt="">
+                        </a>
+                        <div class="caption">
+                            <h4 class="single-title"><a href="~/Product/Channel?channelID=@Model.OriginID[i]" title="">@Model.Title[i]</a></h4>
+                            <span class="meta label label-success">
+
+                                Subscription: @Model.View[i]
+                            </span>
+
+                            <p>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+    </div>
+
+</div>
+
+
+
+

@@ -1,0 +1,21 @@
+﻿@model Dictionary<string,string>
+
+
+@foreach (var link in Model) {
+
+
+    @Html.RouteLink(link.Value, new {
+        controller = "Product",
+        action = "List",
+        timeperiod = link.Key,
+        channel =  ViewBag.SelectedChannel,
+        country =  ViewBag.SelectedCountry,
+        category = ViewBag.SelectedCategory
+
+    },
+    new {
+        @class = link.Value == ViewBag.SelectedTimePeriod ? "selected" : null
+    })
+}
+
+

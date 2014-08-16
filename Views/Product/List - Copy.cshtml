@@ -1,0 +1,43 @@
+﻿@model bulabi.WebUI.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "Bulabi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+<div class="container">
+    <div id="posts" class="row">
+        <!--loop:sites-->
+        @for (int i = 0; i < Model.Link.Count(); i++)
+        {
+            
+        <div id="8" class="item col-md-3">
+            <div class="well">
+
+                <a href="~/Product/Video?originID=@Model.OriginID[i]">
+                    <img class="thumbnail img-responsive" src="@Model.Image[i]">
+                </a>
+
+                <div class="info">
+                    <span class="badge">View: @Model.View[i]</span>
+                    <h5>
+                        <a href="~/Product/Video?originID=@Model.OriginID[i]">@Model.Title[i] </a>
+                    </h5>
+                    <p>@Model.Title[i]</p>
+
+                </div>
+            </div>
+        </div>
+
+        }
+
+    </div>
+
+</div>
+
+
+
+

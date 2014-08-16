@@ -1,0 +1,251 @@
+﻿@model bulabi.WebUI.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "Bulabi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<style>
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a;
+}
+
+
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-wrapper .navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 10px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Pad the edges of the mobile views a bit */
+.marketing {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@@media (min-width: 768px) {
+
+  /* Remove the edge padding needed for mobile */
+  .marketing {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-left:  15px;
+    padding-right: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-left:  0;
+    padding-right: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 390px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+
+}
+
+@@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+}
+
+</style>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:First slide" alt="First slide" src="@Model.Image[0]"> 
+          <div class="container">
+            <div class="carousel-caption">
+              <h3>@Model.Title[0]</h3>
+              <p>  </p>
+                
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Second slide" alt="Second slide" src="@Model.Image[1]">
+          <div class="container">
+            <div class="carousel-caption">
+              <h3>@Model.Title[1]</h3>
+              <p>  </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Third slide" alt="Third slide" src="@Model.Image[2]">
+          <div class="container">
+            <div class="carousel-caption">
+              <h3>@Model.Title[2]</h3>
+              <p> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+
+
+
+
+
+<div class="container">
+
+    <div id="container-folio" style="position:relative">
+
+
+            @for (int i = 0; i < Model.Link.Count(); i++)
+            {
+
+                <div class="box col-xs-12 col-md-4 col-sm-6 col-lg-3">
+                    <div class="thumbnail">
+                        <div class="plus">
+                            @*<a href="#" title="read more" class="btn btn-medium btn-default"><i class="fa-icon-heart"></i> f</a>
+                                <a href="#" title="pin it" class="btn btn-medium btn-danger">t</a>*@
+
+                        </div>
+                        <a href="~/Product/Video?originID=@Model.OriginID[i]" title="">
+                            <img class="img-responsive" src="@Model.Image[i]" alt="">
+                        </a>
+                        <div class="caption">
+                            <h4 class="single-title"><a href="~/Product/Video?originID=@Model.OriginID[i]" title="">@Model.Title[i]</a></h4>
+                            <span class="meta label label-success">
+
+                                View: @Model.View[i]
+                            </span>
+
+                            <p>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        
+
+    </div>
+
+</div>
+
+
+
+
